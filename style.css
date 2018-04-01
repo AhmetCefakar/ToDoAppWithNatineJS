@@ -1,0 +1,16 @@
+li{
+    cursor: pointer;
+}
+
+ul li.checked{
+    background: #888;
+    color: white;
+    text-decoration: line-through
+}
+
+.close{
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 12px 16px 0 0;
+}
