@@ -6,6 +6,25 @@ var myListTag = document.querySelector('#mylist');
 // Adding every items to UI list.
 itemList.forEach(function (item) {
     // '<li class="list-group-item">' + item + '<span class="close">x</span></li>'
+    CreateItem(item);
+});
+
+// Creating event adding to 'Add' button.
+document.getElementById('btnCreate').onclick = function(){
+    var newItem = document.querySelector('#txtInput').value;
+    
+    if(newItem === ''){
+        alert('Please. Enter An Item Name');
+        return;
+    }
+    else{
+        CreateItem(newItem);
+    }
+}
+
+
+// Adding Item function. This function used several location this 'JS' file.
+function CreateItem(item){
     var li = document.createElement('li');
     var text = document.createTextNode(item);
 
@@ -30,15 +49,4 @@ itemList.forEach(function (item) {
         var liParent = this.parentElement;
         liParent.style.display = 'none';
     };
-});
-
-
-//  Adding an event listener for every 'X' close button.
-//var closeButtons = document.querySelectorAll('.close');
-
-//closeButtons.forEach(function(itemClose){
-//    itemClose.onclick = function(){
-//        var liParent = this.parentElement;
-//        liParent.style.display = 'none';
-//    };
-//});
+}
