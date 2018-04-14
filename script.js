@@ -22,7 +22,6 @@ document.getElementById('btnCreate').onclick = function(){
     }
 }
 
-
 // Adding Item function. This function used several location this 'JS' file.
 function CreateItem(item){
     var li = document.createElement('li');
@@ -42,11 +41,33 @@ function CreateItem(item){
     // Adding an event listener for every li tag.
     li.addEventListener('click', function () {
         this.classList.toggle('checked');
+        
+        if(document.querySelectorAll('#mylist .checked').length <= 0){
+           document.getElementById('deleteAll').style.display = 'none';
+        }
+        else{
+            document.getElementById('deleteAll').style.display = 'block';
+        }
     });
     
     //  Adding an event listener for every 'X' close button.
     span.onclick = function(){
         var liParent = this.parentElement;
-        liParent.style.display = 'none';
+        liParent.remove();
+        //liParent.style.display = 'none';
     };
+}
+
+// Adding delete all items button.
+document.querySelector('#deleteAll').onclick = function(){
+    var DeletedItems = document.querySelectorAll('#mylist .checked');
+
+    if(DeletedItems.length <= 0){
+        alert('You have to select several items for delete!');
+        document.getElementById('deleteAll').style.display = 'none';
+    }
+    else{
+        DeletedItems.forEach(function(item){item.remove();});
+        document.getElementById('deleteAll').style.display = 'none';
+    }
 }
